@@ -5,8 +5,12 @@ on:
   pull_request:
 
 jobs:
-  test-build:
+  frontend-build:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: frontend
 
     steps:
       - uses: actions/checkout@v4
