@@ -1,24 +1,40 @@
+# Workflow navn (vises i GitHub Actions)
 name: CI
 
+# Hvornår workflowet kører: ved push og pull request
 on:
   push:
   pull_request:
 
 jobs:
+  # Job der bygger frontend
   frontend-build:
+    # Vist navn for jobbet
+    name: Frontend — Build og test
+
+    # Kør jobbet på en Ubuntu runner hos GitHub
     runs-on: ubuntu-latest
 
+    # Kør alle `run:`-kommandoer inde i frontend-mappen
     defaults:
       run:
         working-directory: frontend
 
     steps:
-      - uses: actions/checkout@v4
+      # Hent kildekoden (skal altid være første trin)
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      # Installer den ønskede Node-version (her: 20)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - run: npm install
+      # Installer npm-afhængigheder i frontend-mappen (læser frontend/package.json)
+      - name: Install dependencies
+        run: npm install
 
-      - run: npm run build
+      # Kør build-scriptet fra frontend/package.json (fx `vite build`)
+      - name: Build frontend
+        run: npm run build
