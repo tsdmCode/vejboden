@@ -3,6 +3,7 @@ import { prisma } from '../prisma.js';
 import bcrypt from 'bcrypt';
 
 export const getRecords = async (req: Request, res: Response) => {
+  
   try {
     const data = await prisma.users.findMany();
     res.json(data);
@@ -10,6 +11,7 @@ export const getRecords = async (req: Request, res: Response) => {
     console.error(error);
     res.status(500).json({ error: 'failed to fetch users' });
   }
+
 };
 
 export const getRecordById = async (req: Request, res: Response) => {

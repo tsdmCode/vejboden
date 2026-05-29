@@ -12,10 +12,11 @@ export const getRecords = async (req: Request, res: Response) => {
 };
 
 export const getRecordById = async (req: Request, res: Response) => {
+  const { id } = req.params as { id: string };
+
   try {
-    const { id } = req.params;
     const data = await prisma.booth.findUnique({
-      where: { id: parseInt(id) }
+      where: { id: parseInt(id) },
     });
     if (!data) {
       res.status(404).json({ error: 'Booth not found' });
@@ -43,8 +44,8 @@ export const createRecord = async (req: Request, res: Response) => {
         products: products || [],
         owner_id: parseInt(owner_id),
         latitude: parseFloat(latitude),
-        longitude: parseFloat(longitude)
-      }
+        longitude: parseFloat(longitude),
+      },
     });
     res.json(data);
   } catch (error) {
@@ -54,8 +55,12 @@ export const createRecord = async (req: Request, res: Response) => {
 };
 
 export const updateRecord = async (req: Request, res: Response) => {
+  const { id } = req.params as { id: string };
+  if (!id || isNaN(Number(id))) {
+    res.status(400).json({ error: 'Invalid user ID' });
+    return;
+  }
   try {
-    const { id } = req.params;
     const { name, products, latitude, longitude } = req.body;
 
     const updateData: any = {};
@@ -66,7 +71,7 @@ export const updateRecord = async (req: Request, res: Response) => {
 
     const data = await prisma.booth.update({
       where: { id: parseInt(id) },
-      data: updateData
+      data: updateData,
     });
     res.json(data);
   } catch (error) {
@@ -76,10 +81,14 @@ export const updateRecord = async (req: Request, res: Response) => {
 };
 
 export const deleteRecord = async (req: Request, res: Response) => {
+  const { id } = req.params as { id: string };
+  if (!id || isNaN(Number(id))) {
+    res.status(400).json({ error: 'Invalid booth ID' });
+    return;
+  }
   try {
-    const { id } = req.params;
     await prisma.booth.delete({
-      where: { id: parseInt(id) }
+      where: { id: parseInt(id) },
     });
     res.json({ message: 'Booth deleted successfully' });
   } catch (error) {
