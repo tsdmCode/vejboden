@@ -1,0 +1,72 @@
+# Workflow navn (vises i GitHub Actions)
+name: CI
+
+# Hvornår workflowet kører: ved push og pull request
+on:
+  push:
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  # Job der bygger frontend
+  frontend-build:
+    # Vist navn for jobbet
+    name: Frontend — Build og test
+
+    # Kør jobbet på en Ubuntu runner hos GitHub
+    runs-on: ubuntu-latest
+
+    # Kør alle `run:`-kommandoer inde i frontend-mappen
+    defaults:
+      run:
+        working-directory: frontend
+
+    steps:
+      # Hent kildekoden (skal altid være første trin)
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Installer den ønskede Node-version (her: 20)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Installer npm-afhængigheder i frontend-mappen (læser frontend/package.json)
+      - name: Install dependencies
+        run: npm ci
+
+      # Kør build-scriptet fra frontend/package.json (fx `vite build`)
+      - name: Build frontend
+        run: npm run build
+
+  backend-check:
+    # Vist navn i Actions UI
+    name: Backend — Install og test
+
+    # Kør på en standard Ubuntu runner
+    runs-on: ubuntu-latest
+
+    # Sørg for at alle `run:`-kommandoer køres inde i backend-mappen
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      # Hent kildekoden (skal altid være første trin)
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Installer Node.js på runneren (sørg for en version backend understøtter)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Installer npm-afhængigheder ud fra backend/package.json
+      - name: Install dependencies
+        run: npm ci
+
+      # Midlertidigt: undgå at fejle CI indtil I har tests
+      - name: Skip tests for now
+        run: echo "No backend tests yet" && exit 0
