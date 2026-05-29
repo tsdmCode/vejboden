@@ -1,0 +1,52 @@
+.cards {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-light-gray);
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 15vw;
+  height: auto;
+  margin: 2rem;
+
+  .cardImage {
+    width: 100%;
+    height: auto;
+    border-radius: 2rem;
+  }
+
+  .cardTitle {
+    font-size: var(--text-h2-size);
+    font-weight: var(--text-h2-weight);
+    margin-top: 1rem;
+    color: var(--color-charcoal);
+  }
+
+  .cardDistance {
+    font-size: var(--text-body-size);
+    font-weight: var(--text-body-weight);
+    color: var(--color-stone-gray);
+    margin-top: 0.5rem;
+  }
+
+  .cardStatus {
+    font-size: var(--text-caption-size);
+    font-weight: var(--text-caption-weight);
+    margin-top: 0.5rem;
+  }
+
+  .open {
+    color: var(--color-harvest-green);
+    background-color: lightgreen;
+    border-radius: 5rem;
+    width: fit-content;
+    padding: 0.2rem 1rem;
+  }
+
+  .closed {
+    color: var(--color-tomato-red);
+    background-color: lightcoral;
+    border-radius: 5rem;
+    width: fit-content;
+    padding: 0.2rem 1rem;
+  }
+}
