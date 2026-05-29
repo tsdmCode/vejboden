@@ -1,4 +1,4 @@
-import './App.scss'
+import './App.css'
 import { Bs4CircleFill } from "react-icons/bs";
 function App() {
 
