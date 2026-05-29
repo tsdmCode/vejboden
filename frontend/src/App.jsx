@@ -1,12 +1,19 @@
-import './App.css'
-import { Bs4CircleFill } from "react-icons/bs";
-function App() {
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Onboarding from "./Components/Pages/Onboarding/OnBoarding";
+import Forside from "./Components/Pages/Forside/Forside";
+import Login from "./Components/Pages/Login/Login";
 
+function App() {
   return (
-    <>
-    <Bs4CircleFill />
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Onboarding />} />
+        <Route path="/forside" element={<Forside />} />
+        <Route path="/Login" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

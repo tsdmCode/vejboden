@@ -1,0 +1,188 @@
+.onboarding {
+  font-family: Georgia, serif;
+  background: var(--color-harvest-green);
+  color: var(--color-white);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem 2rem 3rem;
+  box-sizing: border-box;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+
+  h1 {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    max-width: 300px;
+  }
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 380px;
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  align-items: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.dotActive {
+  width: 24px;
+  background: var(--color-white);
+}
+
+.stepWrap {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    font-size: var(--text-h2-size);
+    font-weight: var(--text-h2-weight);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  p {
+    font-size: var(--text-body-size);
+    font-weight: var(--text-body-weight);
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-family: system-ui, sans-serif;
+  }
+
+  label {
+    font-size: var(--text-caption-size);
+    font-weight: var(--text-caption-weight);
+    color: rgba(255, 255, 255, 0.7);
+    display: block;
+    margin-bottom: 6px;
+    font-family: system-ui, sans-serif;
+  }
+}
+
+.progressLabel {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 8px;
+  font-family: system-ui, sans-serif;
+}
+
+.bars {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 2.5rem;
+}
+
+.bar {
+  height: 4px;
+  flex: 1;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.25);
+  transition: background 0.3s;
+}
+
+.barActive {
+  background: var(--color-white);
+}
+
+.input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: var(--text-body-size);
+  border: 0.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 14px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.textarea {
+  height: 90px;
+  resize: none;
+  padding-top: 12px;
+}
+
+.btnPrimary {
+  width: 100%;
+  padding: 18px 24px;
+  font-size: var(--text-body-size);
+  font-weight: 500;
+  font-family: system-ui, sans-serif;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  background: var(--color-white);
+  color: var(--color-charcoal);
+}
+
+.btnSecondary {
+  width: 100%;
+  padding: 18px 24px;
+  font-size: var(--text-body-size);
+  font-weight: 500;
+  font-family: system-ui, sans-serif;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--color-white);
+  margin-top: 10px;
+}
+
+.success {
+  text-align: center;
+}
+
+.successIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  margin: 0 auto 1.5rem;
+  color: var(--color-white);
+}
