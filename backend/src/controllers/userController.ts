@@ -21,6 +21,7 @@ export const getRecordById = async (req: Request, res: Response) => {
     res.status(400).json({ error: 'Invalid user ID' });
     return;
   }
+  
   try {
     const user = await prisma.users.findUnique({
       where: { id: Number(id) },

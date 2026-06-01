@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config({ quiet: true });
 import express from 'express';
+import helmet from 'helmet';
 import passport from "./middleware/googleOAuth.js";
 import { userRoutes } from './routes/userRoutes.js';
 import { boothRoutes } from './routes/boothRoutes.js';
@@ -11,6 +12,7 @@ import { authRoutes } from './routes/authRoutes.js';
 const port = process.env.PORT || 3000;
 const app = express();
 
+app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
