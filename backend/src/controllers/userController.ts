@@ -47,6 +47,10 @@ export const createRecord = async (req: Request, res: Response) => {
     return;
   }
 
+  if (role === "ADMIN") {
+    res.status(400).json({error: "Unauthorized"})
+  }
+  
   try {
     const data = await prisma.users.create({
       data: {
