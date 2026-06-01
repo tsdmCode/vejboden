@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import style from "./Onboarding.module.scss";
+import style from "./OnBoarding.module.scss";
 
 export default function Onboarding() {
   const [step, setStep] = useState(0);
