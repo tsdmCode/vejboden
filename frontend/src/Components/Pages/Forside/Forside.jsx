@@ -1,6 +1,7 @@
 import style from "./Forside.module.scss";
 import SearchField from "../../SearchBar/SearchField";
 import { Cards } from "../../Cards/Cards";
+import { Filter } from "../../Filter/Filter";
 
 
 export default function Forside() {
@@ -11,7 +12,10 @@ return (
         <h2>Find Din nærmeste Vejbod</h2>
         <h4>Lokale sælgere nær dig</h4>
         <SearchField/>
+    <br />
     </div>
+    <br />
+        <Filter/>
         <Cards/>
     </div>
 
