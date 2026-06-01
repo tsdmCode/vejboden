@@ -17,3 +17,10 @@
   --text-caption-size: 12px;
   --text-caption-weight: 400;
 }
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+} 
