@@ -9,28 +9,35 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Users {
-  id        Int      @id @default(autoincrement())
-  firstname String
-  lastname  String
-  username  String   @unique
-  email     String   @unique
-  password  String
-  role      Role
-  booths    Booth[]
-  ratings   Rating[]
+  id             Int      @id @default(autoincrement())
+  firstname      String
+  lastname       String
+  username       String   @unique
+  email          String   @unique
+  password       String?
+  googleId       String?  @unique
+  profilePicture String?
+  role           Role
+  booths         Booth[]
+  ratings        Rating[]
 }
 
 model Booth {
-  id        Int      @id @default(autoincrement())
-  name      String   @unique
-  products  String[]
-  owner_id  Int
-  latitude  Float
-  longitude Float
-  createdAt DateTime @default(now())
+  id               Int      @id @default(autoincrement())
+  name             String   @unique
+  products         String[]
+  owner_id         Int
+  latitude         Float
+  longitude        Float
+  openTimeWeekday  String? 
+  closeTimeWeekday String? 
+  openTimeWeekend  String? 
+  closeTimeWeekend String? 
+  createdAt        DateTime @default(now())
 
   owner   Users    @relation(fields: [owner_id], references: [id])
   ratings Rating[]
