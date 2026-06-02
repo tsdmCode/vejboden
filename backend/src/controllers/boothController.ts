@@ -30,25 +30,37 @@ export const getRecordById = async (req: Request, res: Response) => {
 
 export const createRecord = async (req: Request, res: Response) => {
   try {
-    const { name, products, owner_id, latitude, longitude } = req.body;
+    console.log('POST /api/booths body:', req.body);
+    const { name, products, location, openingHours, image, owner_id, latitude, longitude } = req.body || {};
 
-    if (!name || !owner_id || latitude === undefined || longitude === undefined) {
+    if (!name || latitude === undefined || longitude === undefined) {
       res.status(400).json({ error: 'Missing required fields' });
       return;
     }
 
+    const parsedOwnerId = owner_id !== undefined && owner_id !== null ? parseInt(owner_id, 10) : null;
+    const ownerId = Number.isNaN(parsedOwnerId) ? null : parsedOwnerId;
+
+    const boothData: any = {
+      name,
+      products: products || '',
+      location: location || '',
+      openingHours: openingHours || '',
+      image: image || '',
+      latitude: parseFloat(latitude),
+      longitude: parseFloat(longitude),
+    };
+
+    if (ownerId !== null) {
+      boothData.owner_id = ownerId;
+    }
+
     const data = await prisma.booth.create({
-      data: {
-        name,
-        products: products || [],
-        owner_id: parseInt(owner_id),
-        latitude: parseFloat(latitude),
-        longitude: parseFloat(longitude)
-      }
+      data: boothData,
     });
     res.json(data);
   } catch (error) {
-    console.error(error);
+    console.error('Failed to create booth:', error);
     res.status(500).json({ error: 'Failed to create booth' });
   }
 };
@@ -56,11 +68,14 @@ export const createRecord = async (req: Request, res: Response) => {
 export const updateRecord = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const { name, products, latitude, longitude } = req.body;
+    const { name, products, location, openingHours, image, latitude, longitude } = req.body;
 
     const updateData: any = {};
     if (name) updateData.name = name;
     if (products) updateData.products = products;
+    if (location) updateData.location = location;
+    if (openingHours) updateData.openingHours = openingHours;
+    if (image) updateData.image = image;
     if (latitude !== undefined) updateData.latitude = parseFloat(latitude);
     if (longitude !== undefined) updateData.longitude = parseFloat(longitude);
 

@@ -8,7 +8,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
 }
 
 model Users {
@@ -24,15 +25,18 @@ model Users {
 }
 
 model Booth {
-  id        Int      @id @default(autoincrement())
-  name      String   @unique
-  products  String[]
-  owner_id  Int
-  latitude  Float
-  longitude Float
-  createdAt DateTime @default(now())
+  id            Int      @id @default(autoincrement())
+  name          String   @unique
+  products      String?
+  location      String?
+  openingHours  String?
+  image         String?
+  owner_id      Int?
+  latitude      Float
+  longitude     Float
+  createdAt     DateTime @default(now())
 
-  owner   Users    @relation(fields: [owner_id], references: [id])
+  owner   Users?    @relation(fields: [owner_id], references: [id])
   ratings Rating[]
 }
 

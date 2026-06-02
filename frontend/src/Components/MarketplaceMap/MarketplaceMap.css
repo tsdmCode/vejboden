@@ -1,0 +1,86 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal input {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.modal button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.modal button[type="submit"] {
+  background: #2ecc71;
+  color: white;
+}
+
+.modal button[type="button"] {
+  background: #e74c3c;
+  color: white;
+}
+
+.marketplace-map-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  height: 100%;
+}
+
+.marketplace-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.create-button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #2f80ed;
+  color: white;
+  cursor: pointer;
+}
+
+.create-instructions {
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.marketplace-map-container {
+  width: 100%;
+  height: calc(100% - 50px);
+  min-height: 360px;
+}
