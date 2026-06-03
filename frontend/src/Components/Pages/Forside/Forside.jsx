@@ -8,10 +8,13 @@ export default function Forside() {
   const [boder, setBoder] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/booths")
-      .then((res) => res.json())
-      .then((data) => setBoder(data));
-  }, []);
+  fetch("http://localhost:3000/api/booths")
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      setBoder(data);
+    });
+}, []);
 
   return (
     <div className={style.cardscontent}>
