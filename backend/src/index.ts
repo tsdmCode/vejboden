@@ -7,7 +7,8 @@ import { userRoutes } from './routes/userRoutes.js';
 import { boothRoutes } from './routes/boothRoutes.js';
 import { ratingsRoutes } from './routes/ratingsRoutes.js';
 import { authRoutes } from './routes/authRoutes.js';
-import session from "express-session"
+import session from "express-session";
+import cors from "cors";
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -15,6 +16,11 @@ const app = express();
 app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(cors({
+  origin: "http://localhost:5173", //skift til vores frontend url i prod
+  credentials: true
+}));
 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'your_session_secret',
