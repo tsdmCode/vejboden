@@ -29,6 +29,28 @@ export const getRecordById = async (req: Request, res: Response) => {
   }
 };
 
+//den her henter ratings for en specifik bod så vi kan displaye det
+export const getRecordsByBoothId = async (req: Request, res: Response) => {
+  const { boothId } = req.params as { boothId: string };
+
+  if (!boothId || isNaN(Number(boothId))) {
+    res.status(400).json({ error: 'Invalid booth ID' });
+    return;
+  }
+
+  try {
+    const avgRating = await prisma.rating.aggregate({
+      where: { boothId: parseInt(boothId) },
+      _avg: { numStars: true },
+      _count: true,
+    });
+    res.json(avgRating);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to fetch booth ratings' });
+  }
+};
+
 export const createRecord = async (req: Request, res: Response) => {
   try {
     const { name, products, owner_id, latitude, longitude } = req.body;
