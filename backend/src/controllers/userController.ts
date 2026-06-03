@@ -1,9 +1,9 @@
 import type { Request, Response } from 'express';
 import { prisma } from '../prisma.js';
 import bcrypt from 'bcrypt';
+import { isValidEmail, isValidName } from '../utils/validation.js';
 
 export const getRecords = async (req: Request, res: Response) => {
-  
   try {
     const data = await prisma.users.findMany();
     res.json(data);
@@ -11,17 +11,16 @@ export const getRecords = async (req: Request, res: Response) => {
     console.error(error);
     res.status(500).json({ error: 'failed to fetch users' });
   }
-
 };
 
 export const getRecordById = async (req: Request, res: Response) => {
   const { id } = req.params as { id: string };
-  
+
   if (!id || isNaN(Number(id))) {
     res.status(400).json({ error: 'Invalid user ID' });
     return;
   }
-  
+
   try {
     const user = await prisma.users.findUnique({
       where: { id: Number(id) },
@@ -47,10 +46,20 @@ export const createRecord = async (req: Request, res: Response) => {
     return;
   }
 
-  if (role === "ADMIN") {
-    res.status(400).json({error: "Unauthorized"})
+  if (!isValidName(firstname) || !isValidName(lastname)) {
+    res.status(400).json({ error: 'Bad name' });
+    return;
   }
-  
+
+  if (!isValidEmail(email)) {
+    res.status(400).json({ error: 'Bad email lol' });
+    return;
+  }
+
+  if (role != 'USER' || role != 'SELLER') {
+    res.status(400).json({ error: 'Unauthorized' });
+  } //placeholder halløj, skriv noget lidt nicere eller også fjerner vi det lige hurtigt hvis vi vil lave admins, vi behøver ikke validate passwords fordi vi crypter dem
+
   try {
     const data = await prisma.users.create({
       data: {
@@ -70,10 +79,20 @@ export const createRecord = async (req: Request, res: Response) => {
 };
 export const updateRecord = async (req: Request, res: Response) => {
   const { id } = req.params as { id: string };
-  
+  const userId = req.user?.id;
+  const userRole = req.user?.role;
+
   if (!id || isNaN(Number(id))) {
     res.status(400).json({ error: 'Invalid user ID' });
     return;
+  }
+
+  if (!userId || !userRole) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+
+  if (userRole !== 'ADMIN' && Number(id) !== userId) {
+    return res.status(403).json({ error: 'Forbidden' });
   }
 
   try {
@@ -100,10 +119,20 @@ export const updateRecord = async (req: Request, res: Response) => {
 
 export const deleteRecord = async (req: Request, res: Response) => {
   const { id } = req.params as { id: string };
-  
+  const userId = req.user?.id;
+  const userRole = req.user?.role;
+
   if (!id || isNaN(Number(id))) {
     res.status(400).json({ error: 'Invalid user ID' });
     return;
+  }
+
+  if (!userId || !userRole) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+
+  if (userRole !== 'ADMIN' && Number(id) !== userId) {
+    return res.status(403).json({ error: 'Forbidden' });
   }
 
   try {
