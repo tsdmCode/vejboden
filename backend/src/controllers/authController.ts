@@ -39,7 +39,7 @@ export const login = async (req: Request, res: Response) => {
     }
 
     const userToken = generateToken({ id: user.id, role: user.role });
-    const { password: _, ...safeUser } = user;
+    const { password: _, ...safeUser } = user; //her fjerner vi password delen fra det vi returnerer
 
     return res.json({ userToken, user: safeUser });
   } catch (error) {
