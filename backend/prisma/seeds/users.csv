@@ -1,8 +1,0 @@
-firstname,lastname,username,email,password,profilePicture,role
-Alice,Smith,alice,alice@example.com,alicepassword5000,https://example.com/alice.png,SELLER
-Bob,Johnson,bob,bob@example.com,bobpassword6000,https://example.com/bob.png,USER
-Carol,Williams,carol,carol@example.com,carolpassword8000,https://example.com/carol.png,ADMIN
-David,Lee,david,david@example.com,davidpassword1000,https://example.com/david.png,SELLER
-Emma,Brown,emma,emma@example.com,emmapassword2000,https://example.com/emma.png,SELLER
-Frank,Miller,frank,frank@example.com,frankpassword3000,https://example.com/frank.png,SELLER
-Grace,Kim,grace,grace@example.com,gracepassword4000,https://example.com/grace.png,USER
