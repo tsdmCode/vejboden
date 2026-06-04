@@ -33,7 +33,6 @@ export default function MarketplaceMap({
 
   const handleSaveMarker = useCallback(
     (data) => {
-      console.log("MarketplaceMap saving marker", data);
       onCreateMarker(data);
       setModalPos(null);
       setCreateMode(false);
@@ -48,7 +47,6 @@ export default function MarketplaceMap({
           className="create-button"
           onClick={() => {
             setCreateMode((current) => !current);
-            setModalPos(null);
           }}
         >
           {createMode ? "Annuller oprettelse" : "Opret ny bod"}
