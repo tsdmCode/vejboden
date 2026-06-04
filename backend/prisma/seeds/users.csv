@@ -1,0 +1,4 @@
+firstname,lastname,username,email,password,profilePicture,role
+Alice,Smith,alice,alice@example.com,,https://example.com/alice.png,SELLER
+Bob,Johnson,bob,bob@example.com,,https://example.com/bob.png,USER
+Carol,Williams,carol,carol@example.com,,https://example.com/carol.png,ADMIN
