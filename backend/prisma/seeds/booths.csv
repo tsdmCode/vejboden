@@ -1,3 +1,7 @@
 name,products,ownerUsername,latitude,longitude,openTimeWeekday,closeTimeWeekday,openTimeWeekend,closeTimeWeekend
 Sunrise Bakery,"bread;pastries;sandwiches",alice,55.6761,12.5683,07:00,16:00,08:00,14:00
 Green Veggies,"salad;veggies;smoothies",bob,55.6770,12.5690,09:00,17:00,10:00,15:00
+Morning Juice,"juices;smoothies;bowls",david,55.6765,12.5689,07:30,15:00,08:00,14:00
+Spice Corner,"spices;street food;wraps",emma,55.6768,12.5695,10:00,18:00,11:00,16:00
+Sea Bites,"seafood;fish tacos;shrimp",frank,55.6759,12.5678,11:00,19:00,11:00,17:00
+Sweet Treats,"cakes;cookies;coffee",grace,55.6762,12.5680,08:00,16:00,09:00,15:00
