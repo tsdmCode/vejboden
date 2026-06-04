@@ -17,6 +17,12 @@
   --text-caption-size: 12px;
   --text-caption-weight: 400;
 }
+* {
+  box-sizing: border-box;
+}
+html, body {
+  overflow-x: hidden;
+}
 
 body {
   margin: 0;
