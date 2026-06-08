@@ -1,0 +1,143 @@
+.profileContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem 1rem 2rem;
+  background: var(--color-cream);
+}
+
+.accountRow {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.accountName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-stone-gray);
+  margin: 0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cardsWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sectionCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 0.0625rem solid rgba(139, 90, 60, 0.12);
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-charcoal);
+}
+
+.profileItems {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.profileItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-bottom: 0.0625rem solid rgba(139, 90, 60, 0.12);
+  font-size: var(--text-body-size);
+  color: var(--color-charcoal);
+  list-style: none;
+}
+
+.profileItem:last-child {
+  border-bottom: none;
+}
+
+.itemIcon {
+  width: 3rem;
+  height: 3rem;
+  flex: 0 0 3rem;
+  border-radius: 0.75rem;
+  background: rgba(74, 124, 78, 0.14);
+}
+
+.profileItemText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.profileItemTitle {
+  font-size: var(--text-body-size);
+  font-weight: 700;
+  color: var(--color-charcoal);
+}
+
+.profileItemSubtitle {
+  font-size: var(--text-body-size);
+  color: var(--color-stone-gray);
+}
+
+.sellerSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sellerTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-stone-gray);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.sellerCards {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sellerCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  border: none;
+  border-bottom: 0.0625rem solid rgba(139, 90, 60, 0.12);
+  background: transparent;
+}
+
+.sellerCardTitle {
+  margin: 0;
+  font-size: var(--text-body-size);
+  font-weight: 700;
+  color: var(--color-charcoal);
+}
+
+.sellerCardText {
+  margin: 0;
+  font-size: var(--text-body-size);
+  color: var(--color-stone-gray);
+}
+
+@media (min-width: 48rem) {
+  .profileContent {
+    padding: 2rem 1.5rem;
+    max-width: 40rem;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,115 @@
+.page {
+  font-family: Georgia, serif;
+  background: var(--color-harvest-green);
+  color: var(--color-white);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4rem 2rem 3rem;
+  box-sizing: border-box;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.top {
+  h1 {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 8px;
+  }
+
+  p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  label {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 6px;
+    font-family: system-ui, sans-serif;
+  }
+}
+
+.input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 0.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 14px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.btnPrimary {
+  width: 100%;
+  padding: 18px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: system-ui, sans-serif;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  background: var(--color-white);
+  color: var(--color-charcoal);
+  margin-bottom: 10px;
+}
+
+.btnSecondary {
+  width: 100%;
+  padding: 18px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: system-ui, sans-serif;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--color-white);
+}
+
+.input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: var(--text-body-size);
+  border: 0.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 14px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: -8px 0 8px;
+  font-family: system-ui, sans-serif;
+  margin-bottom: 2rem;
+}

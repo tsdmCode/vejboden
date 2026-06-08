@@ -1,0 +1,15 @@
+import { Router } from "express";
+import { getRecords, getRecordById, createRecord, updateRecord, deleteRecord } from "../controllers/ratingsController.js";
+import { authMiddleware } from "../middleware/auth.js";
+import { getRecordsByBoothId } from "../controllers/boothController.js";
+
+const router = Router();
+
+router.get("/", getRecords);
+router.get("/booth/:boothId", getRecordsByBoothId);
+router.get("/:id", getRecordById);
+router.post("/", authMiddleware, createRecord);
+router.patch("/:id", authMiddleware, updateRecord);
+router.delete("/:id", authMiddleware, deleteRecord);
+
+export const ratingsRoutes = router;
